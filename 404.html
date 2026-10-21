@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<title>Zukrit</title>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">zukrit<span>.</span></a>
+</header>
+<main>
+  <!-- A shared link to an event (/e/<key>). With the app installed, the
+       phone opens it in the app and this page is never seen. -->
+  <section id="invite" hidden>
+    <h1 data-en="You're invited." data-da="Du er inviteret.">You're invited.</h1>
+    <p data-en="This invitation opens in the Zukrit app, where you can see the event and ask to join."
+       data-da="Invitationen åbner i Zukrit-appen, hvor du kan se arrangementet og spørge om at komme med.">This invitation opens in the Zukrit app, where you can see the event and ask to join.</p>
+    <ul class="links">
+      <li><a id="open-app" href="#" data-en="Open in the app" data-da="Åbn i appen">Open in the app</a></li>
+    </ul>
+    <p data-en="Don't have it yet? Zukrit is coming soon to iPhone and Android."
+       data-da="Har du den ikke endnu? Zukrit kommer snart til iPhone og Android.">Don't have it yet? Zukrit is coming soon to iPhone and Android.</p>
+  </section>
+  <section id="missing">
+    <h1 data-en="Page not found" data-da="Siden findes ikke">Page not found</h1>
+    <p><a href="/" data-en="Go to the front page" data-da="Gå til forsiden">Go to the front page</a></p>
+  </section>
+</main>
+<footer>© 2026 Zukrit</footer>
+<script>
+  (function () {
+    var key = location.pathname.match(/^\/e\/([A-Za-z0-9_-]{22})\/?$/);
+    if (key) {
+      document.getElementById('invite').hidden = false;
+      document.getElementById('missing').hidden = true;
+      // On Android, opens the app even from browsers that do not hand the
+      // link over by themselves (e.g. inside other apps).
+      document.getElementById('open-app').href =
+        'intent://zukrit.com/e/' + key[1] +
+        '#Intent;scheme=https;package=dk.zukrit.zukrit;end';
+    }
+    if ((navigator.language || '').toLowerCase().indexOf('da') === 0) {
+      document.documentElement.lang = 'da';
+      var parts = document.querySelectorAll('[data-da]');
+      for (var i = 0; i < parts.length; i++) parts[i].textContent = parts[i].getAttribute('data-da');
+    }
+  })();
+</script>
+</body>
+</html>

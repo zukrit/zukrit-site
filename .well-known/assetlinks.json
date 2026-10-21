@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "dk.zukrit.zukrit",
+      "sha256_cert_fingerprints": [
+        "9E:2D:5A:54:E4:17:63:0B:55:ED:ED:97:61:04:1A:4D:2A:B4:D3:AB:1E:33:76:CD:A0:C7:F2:7F:93:0F:BE:36"
+      ]
+    }
+  }
+]
